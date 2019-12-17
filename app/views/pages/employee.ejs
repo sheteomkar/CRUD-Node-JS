@@ -1,0 +1,171 @@
+
+<link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script src="/assets/js/jquery.min.js" type="text/javascript"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Employee</h2><h5><span class="pull-right" style="color: tomato;" onclick="addEmp();">+Add New</span></h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 style="display: none;" id="msg"></h4>
+
+            <table id="empTable" class="table table-bordered table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <%
+                    if (result.status = '1') { 
+                    var employeelist = result.result;
+                    if(employeelist.length>0){
+                    for(var i=0; i < employeelist.length; i++) { %>
+                    <tr id="tr_<%= employeelist[i].id %>">
+                        <td><input type="hidden" value="<%= (employeelist[i].id>0 ? employeelist[i].id : 0) %>" name="id" id="id_<%= employeelist[i].id %>"><%= employeelist[i].id %></td>
+                        <td><input type="text" value="<%= employeelist[i].name %>" name="name" id="name_<%= employeelist[i].id %>" disabled=""></td>
+                        <td><input type="text" value="<%= employeelist[i].age %>" name="age" id="age_<%= employeelist[i].id %>" disabled=""></td>
+                        <td>
+                            <span id="edit_<%= employeelist[i].id %>" onclick="editEmp('<%= employeelist[i].id %>');" style="color: green;">Edit</span>
+                            <span id="update_<%= employeelist[i].id %>" onclick="updateEmp('<%= employeelist[i].id %>');" style="color: green;display: none;">Update</span>
+                            <span id="delete_<%= employeelist[i].id %>" onclick="deleteEmp('<%= employeelist[i].id %>');" style="color: red;">Delete</span>
+                        </td>
+                    </tr>
+                    <% }
+                    }else{ %>
+                    <tr><td colspan="3" style="text-align: center;">No records found</td></tr>
+                    <%}
+                    }else{ %>
+                <p>No records found</p>
+                <%} %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var new_id = 0;
+    function addEmp() {
+        new_id++;
+        var n1 = "n1_" + new_id;
+        var html = '<tr id="tr_' + n1 + '">' +
+                '<td><input type="hidden" value="0" name="id" id="id_' + n1 + '"></td>' +
+                '<td><input type="text" value="" name="name" id="name_' + n1 + '" ></td>' +
+                '<td><input type="text" value="" name="age" id="age_' + n1 + '" ></td>' +
+                '<td><span id="save_' + n1 + '" onclick="saveEmp(\'' + n1 + '\');" style="color: green;">Save</span>&nbsp;<span id="delete_' + n1 + '" onclick="remove(\'' + n1 + '\')" style = "color: red;" > Delete </span></td > ';
+        $("#empTable").append(html);
+    }
+
+    function remove(n1) {
+        $("#tr_" + n1).hide();
+    }
+
+    function saveEmp(id) {
+        $.ajax({
+            url: "/employee",
+            type: 'POST',
+            data: {"name": $("#name_" + id).val(), "age": $("#age_" + id).val()},
+            success: function (response) {
+                if (response.status == 1) {
+                    $("#msg").css("color", "green");
+                    $("#msg").text("Employee added successfully..!!!");
+                    $("#msg").show();
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+                } else {
+                    $("#msg").css("color", "red");
+                    $("#msg").text(response.result);
+                    $("#msg").show();
+                    setTimeout(function () {
+                        $("#msg").hide();
+                    }, 2000);
+                }
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    }
+    function editEmp(id) {
+        $("#name_" + id).removeAttr("disabled");
+        $("#age_" + id).removeAttr("disabled");
+        $("#edit_" + id).hide();
+        $("#update_" + id).show();
+    }
+
+    function updateEmp(id) {
+        $.ajax({
+            url: "/employee",
+            type: 'PUT',
+            data: {"name": $("#name_" + id).val(), "age": $("#age_" + id).val(), "id": $("#id_" + id).val()},
+            success: function (response) {
+                console.log(response);
+                $("#name_" + id).attr("disabled", true);
+                $("#age_" + id).attr("disabled", true);
+
+                if (response.status == 1) {
+                    $("#msg").css("color", "green");
+                    $("#msg").text(response.result);
+                    $("#edit_" + id).show();
+                    $("#update_" + id).hide();
+                    $("#msg").show();
+                    setTimeout(function () {
+                        $("#msg").hide();
+                    }, 2000);
+                } else {
+                    $("#msg").css("color", "red");
+                    $("#msg").text(response.result);
+                    $("#msg").show();
+                    setTimeout(function () {
+                        $("#msg").hide();
+                    }, 2000);
+                }
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    }
+
+    function  deleteEmp(id) {
+        $.ajax({
+            url: "/employee",
+            type: 'DELETE',
+            data: {"id": id},
+            success: function (response) {
+                if (response.status == 1) {
+                    $("#msg").css("color", "green");
+                    $("#msg").text(response.result);
+                    $("#msg").show();
+                    $("#tr_" + id).hide();
+                    setTimeout(function () {
+                        $("#msg").hide();
+                    }, 2000);
+                } else {
+                    $("#msg").css("color", "red");
+                    $("#msg").text(response.result);
+                    $("#msg").show();
+                    setTimeout(function () {
+                        $("#msg").hide();
+                    }, 2000);
+                }
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    }
+
+</script>
+

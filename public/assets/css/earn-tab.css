@@ -1,0 +1,158 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+
+
+body{color:#000000;}
+
+.tab-content{background:#ffffff;border:1px solid #d4d4d4;padding: 15px 10px 20px; }
+ul.nav-tabs{border:0px;margin-bottom:0px;}
+
+
+
+
+
+
+.ac-head{font-family: 'ProximaNova-Regular';font-size:20px; padding:0px; margin-bottom: 15px; line-height:20px;}
+
+.ac-spik-txt{
+    margin-right: 5px;
+    line-height:45px;
+    border-bottom: 0px;
+    border-radius: 0px;
+    color: #000000;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+   
+    height: 45px;
+    min-width: 106px;
+	background: #fec5c5;}
+
+.ac-spik-txt a{
+color:#000000;
+	background:#bc933b;
+	line-height:45px;
+	display:block;
+	height:45px;
+}
+
+
+.table>thead>tr>th{font-size:13px; color:#000000; border-bottom:1px solid #000000;text-transform: uppercase;font-weight:500;border-top:0px;}
+.table>tbody>tr>td{font-size:13px;color:#000000; padding-left:100px;}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td {
+    padding: 13px 8px;
+	line-height: 1.42857143;
+	color:#000000;
+	width:25%;
+	
+	font-weight:normal;
+	
+    vertical-align: top;
+    border-top: 1px solid transparent;
+}
+.ac-earn>.table>tbody>tr>td a{display:inline-block;text-decoration: underline; color:#000000;}
+.ac-earn>.table>tbody>tr>td a.complete{text-decoration:none; color:#b48834;font-weight:600;}
+
+
+
+
+.ac-activity>.table>tbody>tr>td:nth-child(2){
+	text-align: center;
+	width:40%;
+}
+
+
+
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0px;
+}
+
+
+.ac-table{margin-left:-15px;margin-right:-15px;}
+
+.ac-summary{font-family: 'ProximaNova-Semibold';font-size:20px;color:#000000;margin-bottom: 20px;display:block;text-transform: uppercase;letter-spacing: 1px;}
+
+
+
+@media(max-width:1024px){
+	
+	
+	
+}
+
+@media(max-width:768px){
+	
+	.ac-redeem-txt{padding:0px 60px;}
+	#redeem>.col-md-1{display:none;}
+}
+
+@media(max-width:736px){
+	.table-responsive {
+    border:none;}
+	.tab-content {
+    background: #ffffff;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+	
+}
+
+@media(max-width:667px){
+
+	.ac-activity>.table>thead>tr>th:first-child, .table>tbody>tr>td:first-child {
+		padding-left: 8px;}
+	.ac-earn>.table>thead>tr>th:first-child, .table>tbody>tr>td:first-child {
+		padding-left: 8px;}
+	.ac-redeem-txt {
+    padding: 0px 16px;
+}
+
+}
+
+@media(max-width:568px){
+
+	
+}
+
+@media(max-width:480px){
+	
+	.benefits>thead>tr>th {
+		font-size: 13px;}
+	.ac-redeem-txt {
+    padding: 0px 0px;
+	}
+	.ac-spik-txt{
+		min-width:97px;
+	}
+	
+}
+
+@media(max-width:414px){
+	
+}
+
+@media(max-width:375px){
+	.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+		padding: 13px 2px;}
+	.ac-spik-txt{
+		min-width:85px;
+	}
+	
+}
+
+@media(max-width:320px){
+	.table>tbody>tr>td {font-size:12px;}
+	.ac-table{margin-left:-15px;margin-right:-15px;}
+	.ac-spik-txt{
+		min-width:75px;
+	}
+	.nav-tabs>li>a{min-width:75px;}
+}
+

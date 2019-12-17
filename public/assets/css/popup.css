@@ -1,0 +1,69 @@
+
+/*popup css starts here*/
+.modal-content{
+    background: linear-gradient(0deg,rgba(212,24,100,1) 0,rgba(212,24,100,1) 27%,rgba(244,140,97,1) 99%,rgba(244,140,97,1) 100%);
+    color: white;
+    border-radius: 0px !important;
+    border: 1px solid rgba(0,0,0,.2);
+}
+.modal-dialog {
+    width: 100% !important;
+    max-width: 720px !important;
+    margin: 30px auto;
+}
+.modal-header {
+   
+    border-bottom: none !important;
+}
+.modal-footer {
+    
+    border-top: none !important;
+}
+.modal-title{
+    font-size: 26px;
+    color: #fff;
+    text-align: center;
+    padding-top: 3%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+.sa-pass {
+    width: 100%;
+    max-width: 600px;
+    height: 48px !important;
+    border-radius: 6px !important;
+    font-family: open_sansregular;
+    font-size: 18px !important;
+    color: #d0d0d0;
+    border: none;
+}
+.sa-pop-form>p {
+    font-family: open_sansregular;
+    font-size: 21px;
+    color: #fff;
+    padding-bottom: 15px;
+}
+.ac-reste-btn{
+    background-color: #fff;
+    color: #d41864 !important;
+    border-radius: 4px !important;
+    font-size: 15px;
+    width: 100%;
+    max-width: 144px;
+    height: 42px;
+    font-weight: 600 !important;
+}
+.frgt-message {
+    color: white;
+    padding-left: 44px;
+    font-weight: 600;
+    text-align: left;
+    margin-top: 5px;
+}
+.sa-pop-reset p {
+    font-size: 24px;
+    color: #fff;
+}
+
+/*popup css ends here*/
